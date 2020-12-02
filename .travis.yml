@@ -2,8 +2,6 @@
 
 language: minimal
 
-dist: focal
-
 git:
   depth: 5
 
