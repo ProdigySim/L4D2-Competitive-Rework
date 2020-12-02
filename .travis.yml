@@ -8,10 +8,10 @@ git:
   depth: 5
 
 stages:
-  - compile
+  - build
 
 jobs:
   include:
-    - stage: compile
+    - stage: build
       script:
-        - ./addons/sourcemod/scripting/compile.sh
+        - ./.buildscripts/build.sh
