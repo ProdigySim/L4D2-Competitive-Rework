@@ -1,5 +1,6 @@
 #!/bin/bash -e
 cd "$(dirname "$0")"
+echo $(pwd)
 
 test -e compiled || mkdir compiled
 
