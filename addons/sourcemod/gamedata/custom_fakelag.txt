@@ -1,0 +1,86 @@
+"Games"
+{
+	/*
+	*  bool CCommandBuffer::InsertCommand( const char *pArgS, int nCommandSize, int nTick )
+	*  Search: "WARNING: Command too long... ignoring!\n%s\n"
+	*/
+	"#default"
+	{
+		"Functions"
+		{
+			"Net_LagPacket"
+			{
+				"signature"		"Net_LagPacket"
+				"callconv"		"cdecl"
+				"return"		"bool"
+				"this" "ignore"
+				"arguments"
+				{
+					"newData"
+					{
+						"type"	"bool"
+					}
+					"packet_t"
+					{
+						"type"	"objectptr"
+					}
+				}
+			}
+		}
+	}
+	"#default"
+	{
+		"#supported"
+		{
+			"engine"	"left4dead2"
+		}
+		"Signatures"
+		{
+			"Net_LagPacket"
+			{
+				"library"		"engine"
+				"linux"			"@_Z13NET_LagPacketbP11netpacket_s"
+			}
+			"s_FakeLag"
+			{
+				"library"		"engine"
+				"linux"			"@_ZL9s_FakeLag"
+			}
+		}
+		"Addresses"
+		{
+			"s_FakeLag"
+			{
+				"windows"
+				{
+					"signature" "s_FakeLag_Read"
+					"read" "4"
+				}
+				"linux"
+				{
+					"signature" "s_FakeLag"
+				}
+			}
+		}
+	}
+
+	/* L4D2 has it's own Windows signature. */
+	"left4dead2"
+	{
+		"Signatures"
+		{
+			"Net_LagPacket"
+			{
+				"library"		"engine"
+				"windows"		"\x55\x8B\xEC\x51\x57\x8B\x7D\x2A\x8B\x4F\x2A"
+				/* 55 8B EC 51 57 8B 7D ? 8B 4F ? */
+			}
+			"s_FakeLag_Read"
+			{
+				"library" 	"engine"
+				"windows"		"\xF3\x0F\x10\x05\x2A\x2A\x2A\x2A\x0F\x2F\xD0"
+				/* F3 0F 10 05 ? ? ? ? 0F 2F D0 */
+			}
+		}
+	}
+}
