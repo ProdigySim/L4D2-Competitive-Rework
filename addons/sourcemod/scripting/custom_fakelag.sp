@@ -52,7 +52,6 @@ public MRESReturn Detour_LagPacket(DHookReturn hReturn, DHookParam hParams)
 	// Step 2: set FakeLag static variable based on ip
 	
 	int ip = DHookGetParamObjectPtrVar(hParams, 2, 4, ObjectValueType_Int );
-	// int ip = LoadFromAddress(packet_ptr + view_as<Address>(4), NumberType_Int32);
 	static char ipString[32];
 	Format(ipString, 31, "%d.%d.%d.%d", LOBYTE(ip), LOBYTE(ip >> 8), LOBYTE(ip >> 16), LOBYTE(ip >> 24));
 	float lagAmount;
