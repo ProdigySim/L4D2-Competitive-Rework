@@ -1,0 +1,15 @@
+# https://docs.travis-ci.com/user/job-lifecycle
+
+language: minimal
+
+git:
+  depth: 5
+
+stages:
+  - build
+
+jobs:
+  include:
+    - stage: build
+      script:
+        - ./.buildscripts/build.sh
